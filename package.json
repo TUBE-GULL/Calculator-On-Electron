@@ -1,0 +1,14 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "electron . --no-sandbox"
+  },
+  "author": "Kartmen_Bro",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^26.2.2"
+  }
+}

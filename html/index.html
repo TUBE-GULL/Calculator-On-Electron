@@ -1,0 +1,122 @@
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <!-- <th></th>
+                <th></th>
+                <th></th>
+                <th class="close-window">
+                    <button class="minimize-button"></button>
+                    <button class="close-button"></button>
+                </th> -->
+            </tr>
+            <tr class="titles">
+                <th colspan="4">
+                    <h1>Calculator</h1>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="4">
+                    <input class="action_window" type="text" min="0">
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <button onclick="eraseOnesymbol()">С</button>
+                </th>
+                <th colspan="1">
+                    <button onclick="deleteAllsymbols()">DEL</button>
+                </th>
+                <th colspan="2">
+                    <button onclick="clickhandlerNumber('/')">&divide</button>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="1">
+                    <button onclick="clickhandlerNumber(1)">1</button>
+                </th>
+                <th colspan="1">
+                    <button onclick="clickhandlerNumber(2)">2</button>
+                </th>
+                <th colspan="1">
+                    <button onclick="clickhandlerNumber(3)">3</button>
+                </th>
+                <th colspan="1">
+                    <button onclick="clickhandlerNumber('*')">*</button>
+                </th>
+            </tr>
+            <tr>
+                <th><button onclick="clickhandlerNumber(4)">4</button></th>
+                <th><button onclick="clickhandlerNumber(5)">5</button></th>
+                <th>
+                    <button onclick="clickhandlerNumber(6)">6</button>
+                </th>
+                <th><button onclick="clickhandlerNumber('+')">+</button></th>
+            </tr>
+            <tr>
+                <th><button onclick="clickhandlerNumber(7)">7</button></th>
+                <th><button onclick="clickhandlerNumber(8)">8</button></th>
+                <th><button onclick="clickhandlerNumber(9)">9</button></th>
+                <th>
+                    <button onclick="clickhandlerNumber('-')">-</button>
+                </th>
+            </tr>
+            <tr>
+                <th><button onclick="clickhandlerNumber(0)">0</button></th>
+                <th><button onclick="'.'">.</button></th>
+                <th colspan="2">
+                    <button class="equals" onclick="calculateExpression()">=</button>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        document.addEventListener('keydown', handleKeyPress);
+
+        const actionWindow = window.document.querySelector('.action_window');
+        const allowedKeys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'ArrowLeft', 'ArrowRight',];
+        const mathematicalOperators = ['-', '+', '/', '*']
+
+        // sorting extra clicks 
+        const checkingClickRegistrations = (event) => {
+            const button = event.key.toLowerCase();
+
+            console.log(button)
+            if (button === 'backspace') {
+                eraseOnesymbol();
+            }
+            if (button === 'delete') {
+                deleteAllsymbols();
+            }
+            if (allowedKeys.includes(button) || mathematicalOperators.includes(button)) {
+                actionWindow.value += button
+            }
+            if (button === 'enter') {
+                calculateExpression()
+            }
+        };
+
+        //entering login characters into the window
+        actionWindow.addEventListener('keydown', (event) => {
+            checkingClickRegistrations(event)
+        });
+        //Registration of keystrokes!
+        function handleKeyPress(event) {
+            checkingClickRegistrations(event)
+        };
+        const clickhandlerNumber = (num) => {
+            actionWindow.value += num;
+        };
+        const deleteAllsymbols = () => {
+            actionWindow.value = ''
+        };
+        const eraseOnesymbol = () => {
+            actionWindow.value = actionWindow.value.slice(0, -1)
+        };
+        const calculateExpression = () => {
+            actionWindow.value = eval(actionWindow.value);
+        }
+
+    </script>
+    <!-- <script src="/data/index.js"></script> -->
+</body>
