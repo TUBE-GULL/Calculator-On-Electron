@@ -77,9 +77,9 @@
         const allowedKeys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'ArrowLeft', 'ArrowRight',];
         const mathematicalOperators = ['-', '+', '/', '*']
 
-        // sorting extra clicks 
+        // сортировка лишних нажатий 
         const checkingClickRegistrations = (event) => {
-            const button = event.key.toLowerCase();
+            const button = event.key.toLowerCase();//тут я использую приведения к нижнему регистру
 
             console.log(button)
             if (button === 'backspace') {
@@ -94,13 +94,21 @@
             if (button === 'enter') {
                 calculateExpression()
             }
+            if (button === '.') {
+                actionWindow.value += '.'
+            }
         };
+        const checkExpressionDot = () => {
+            console.log('.')
+        };
+        //        const checkExpression = () => {
+        //        }
 
-        //entering login characters into the window
+        //регистрация ввода символов в окно 
         actionWindow.addEventListener('keydown', (event) => {
             checkingClickRegistrations(event)
         });
-        //Registration of keystrokes!
+        //регистрация нажатий с клавиатуры ! 
         function handleKeyPress(event) {
             checkingClickRegistrations(event)
         };
@@ -113,8 +121,51 @@
         const eraseOnesymbol = () => {
             actionWindow.value = actionWindow.value.slice(0, -1)
         };
+
+
+
         const calculateExpression = () => {
-            actionWindow.value = eval(actionWindow.value);
+            let result
+            const operatorPriority = {
+                '+': 1,
+                '-': 1,
+                '*': 2,
+                '/': 2,
+            };
+            const mathematicalExpression = (num1, num2, operator) => {
+                if (operator === '+') {
+
+                    return num1 + num2;
+                }
+                if (operator === '-') {
+                    return num1 - num2;
+                }
+                if (operator === '/') {
+                    return num1 / num2;
+                }
+                if (operator === '*') {
+                    return num1 * num2;
+                }
+            }
+            const expressions = actionWindow.value;
+            //тут строку с выражения ми перевел в массив 
+            const arrayExpressions = expressions.split(/([+\-*/])/).map((token) => token.trim());// заменить на свое ! регулярную переменную на массив
+            // тут из строки нашел значения операторов 
+            const operators = expressions.match(new RegExp(`[${mathematicalOperators.join('')}]`, 'g'));
+            operators.sort((a, b) => operatorPriority[b] - operatorPriority[a]);
+
+            while (operators.length !== 0) {
+                let operator = operators.shift()
+                let index = arrayExpressions.indexOf(operator)
+                const num1 = arrayExpressions.splice(index - 1, 1)[0];
+                const num2 = arrayExpressions.splice(index, 1)[0];
+                index = arrayExpressions.indexOf(operator)
+                console.log(typeof num1)
+                console.log(typeof num2)
+                arrayExpressions[index] = mathematicalExpression(+num1, +num2, operator)
+            }
+            console.log(`результат -${arrayExpressions}`)
+            return actionWindow.value = arrayExpressions
         }
 
     </script>
