@@ -3,3 +3,5 @@
 0.0.2 wrote the main logic without using the 'eval' method
 
 0.0.3 added README file
+
+0.0.4 removed duplication of mathematical operators and duplication of points 
