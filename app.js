@@ -9,9 +9,9 @@ const createWindow = () => {
         height: 500,
         // frame: false,
         icon: path.join(__dirname, 'icon/Icon_calculator.png'),
-        // resizable: false,
+        resizable: false,
     })
-    // win.setMenuBarVisibility(false);
+    win.setMenuBarVisibility(false);
     win.setTitle('Calculator')
     win.loadFile('html/index.html');
     win.webContents.on('did-finish-load', () => {
