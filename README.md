@@ -7,4 +7,6 @@
 
 0.0.4 removed duplication of mathematical operators and duplication of points 
 
-0.0.5 export Javascript files in data folder
+0.0.5 export Javascript files in data folder 
+
+0.0.6 removed the dot before the operators
