@@ -3,7 +3,7 @@
 ![Image Calculator](img/README_IMG.png)
 
 
-----------------------finished project-------------------------
+------------------------finished project---------------------------
 
 1.0.0
 
