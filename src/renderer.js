@@ -1,7 +1,6 @@
 const { ipcRenderer } = require('electron');
 
 document.addEventListener('keydown', handleKeyPress);
-
 const actionWindow = window.document.querySelector('.action_window');
 const allowedKeys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'ArrowLeft', 'ArrowRight',];
 const mathematicalOperators = ['-', '+', '/', '*']
@@ -32,7 +31,6 @@ const checkingClickRegistrations = (event) => {
 //statementOutput
 const statementOutput = (event) => {
     const latestValues = actionWindow.value.slice(-1)
-    console.log(latestValues)
     if (!mathematicalOperators.includes(latestValues) && latestValues !== '.') {
         actionWindow.value += event
     }
@@ -54,6 +52,7 @@ const checkExpression = (event) => {
 //registering keyboard clicks
 function handleKeyPress(event) {
     checkingClickRegistrations(event)
+    backlightBnt(event)
 };
 //Function for passing numbers to the water window
 const clickhandlerNumber = (num) => {
@@ -62,8 +61,6 @@ const clickhandlerNumber = (num) => {
     } else {
         actionWindow.value += num;
     }
-
-
 };
 //Full window cleaning function
 const deleteAllsymbols = () => {
@@ -116,6 +113,8 @@ const calculateExpression = () => {
     return actionWindow.value = +result.toFixed(2)
 }
 
+//window close and rotate button-----------------------------------------------------
+
 const minimize_Btn_Click = (event) => {
     ipcRenderer.send('minimize-window');
 
@@ -128,3 +127,49 @@ const minimizeBtn = document.querySelector('.minimize-button');
 const closeBtn = document.querySelector('.close-button');
 minimizeBtn.addEventListener('click', minimize_Btn_Click);
 closeBtn.addEventListener('click', close_Btn_Click);
+
+//change theme to day and night-----------------------------------------------------
+
+const bodyColorChange = document.body;
+let isDarkMode = false;
+
+const nippleOfGod = () => {
+    if (isDarkMode) {
+        bodyColorChange.style.background = '#000000';
+    } else {
+        bodyColorChange.style.backgroundColor = 'rgba( 255, 255, 255, 0.10 )';
+        bodyColorChange.style.backgroundColorboxShadow = ' 0 8px 32px 0 rgba(31, 38, 135, 0.37)';
+        bodyColorChange.style.backgroundColorbackdropFilter = 'blur(2.5px)';
+        bodyColorChange.style.color = ' #000000';
+    }
+    isDarkMode = !isDarkMode;
+};
+
+//---------------------------------------------------
+const buttons = document.querySelectorAll(".backlight");
+
+const backlightBnt = (event) => {
+    const button = event.key;
+
+    console.log(buttons)
+    buttons.forEach(btn => {
+        const fn = () => {
+            btn.style.backgroundColor = '#1cc620';
+            setTimeout(() => {
+                btn.style.backgroundColor = '';
+            }, 300);
+        };
+        if (btn.textContent == button) {
+            fn()
+        }
+        if (btn.textContent.replace('DEL', 'Delete') == button) {
+            fn()
+        }
+        if (btn.textContent.replace('÷', '/') == button) {
+
+        }
+        if (btn.textContent.replace('С', 'Backspace') == button) {
+            fn()
+        }
+    });
+}
