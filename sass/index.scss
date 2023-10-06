@@ -1,12 +1,26 @@
+  @font-face {
+      font-family: 'Anton', sans-serif;
+      src:
+          url('/foonds/Anton-Regular.ttf');
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
   body {
+      border: none;
       background-color: #000000;
+      font-family: 'Anton', sans-serif;
   }
 
   table {
       width: 100%;
       height: 100%;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Anton', sans-serif;
       color: #ffffff;
+
+      .frame {
+          -webkit-app-region: drag;
+      }
 
       .close-window {
           width: 100%;
@@ -15,28 +29,40 @@
           justify-content: flex-end;
 
           .close-button {
-              width: 15px;
-              height: 15px;
+              margin-top: -5px;
+              width: 20px;
+              height: 20px;
               text-align: center;
-              background-image: url(/icon/Icon_close-button.png) no-repeat;
+              border: 1px solid #5a5a5a80;
+              background-image: url('../icon/Icon_close-button.png') no-repeat;
               background-position: 0 0;
               background-size: 15px 15px;
           }
 
+          .close-button:hover {
+              background-color: #5a5a5a80;
+              color: #000000;
+          }
+
           .minimize-button {
-              width: 15px;
-              height: 15px;
+              margin-top: -5px;
+              width: 20px;
+              height: 20px;
               text-align: center;
               margin-right: 10px;
-              background-image: url(/icon/Icon_minimize-button.png) no-repeat;
+              border: 1px solid #5a5a5a80;
+              background-image: url('../icon/Icon_minimize-button.png') no-repeat;
+          }
+
+          .minimize-button:hover {
+              background-color: #5a5a5a80;
+              color: #000000;
           }
       }
-
-
   }
 
-
   .action_window {
+      -webkit-app-region: drag;
       width: 100%;
       height: 100%;
       font-size: 30px;
@@ -65,9 +91,11 @@
       padding: 0;
   }
 
-  .actionsMathematical {}
+  //   .actionsMathematical {}
 
   .titles {
+      -webkit-app-region: drag;
+      margin-top: -17px;
       height: 10%;
   }
 
@@ -75,7 +103,7 @@
       height: 5/90%;
 
       th {
-          width: 4/100%;
+          width: 75PX;
       }
 
       button {

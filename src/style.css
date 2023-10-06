@@ -1,36 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+@font-face {
+  font-family: "Anton", sans-serif;
+  src: url("assets/foonds/Anton-Regular.ttf");
+}
+
 body {
+  border: none;
   background-color: #000000;
+  font-family: "Anton", sans-serif;
 }
 
 table {
   width: 100%;
   height: 100%;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Anton", sans-serif;
   color: #ffffff;
 }
+
+table .frame {
+  -webkit-app-region: drag;
+}
+
 table .close-window {
   width: 100%;
   height: 2%;
   display: flex;
   justify-content: flex-end;
 }
+
 table .close-window .close-button {
-  width: 15px;
-  height: 15px;
+  margin-top: -5px;
+  width: 20px;
+  height: 20px;
   text-align: center;
-  background-image: url(/icon/Icon_close-button.png) no-repeat;
+  border: 1px solid rgba(90, 90, 90, 0.5019607843);
+  background-image: url("assets/icons/Icon_close-button.png") no-repeat;
   background-position: 0 0;
   background-size: 15px 15px;
 }
+
+table .close-window .close-button:hover {
+  background-color: rgba(90, 90, 90, 0.5019607843);
+  color: #000000;
+}
+
 table .close-window .minimize-button {
-  width: 15px;
-  height: 15px;
+  margin-top: -5px;
+  width: 20px;
+  height: 20px;
   text-align: center;
   margin-right: 10px;
-  background-image: url(/icon/Icon_minimize-button.png) no-repeat;
+  border: 1px solid rgba(90, 90, 90, 0.5019607843);
+  background-image: url("assets/icons/Icon_minimize-button.png") no-repeat;
+}
+
+table .close-window .minimize-button:hover {
+  background-color: rgba(90, 90, 90, 0.5019607843);
+  color: #000000;
 }
 
 .action_window {
+  -webkit-app-region: drag;
   width: 100%;
   height: 100%;
   font-size: 30px;
@@ -56,15 +87,19 @@ table .close-window .minimize-button {
 }
 
 .titles {
+  -webkit-app-region: drag;
+  margin-top: -17px;
   height: 10%;
 }
 
 tr {
   height: 5/90%;
 }
+
 tr th {
-  width: 4/100%;
+  width: 75PX;
 }
+
 tr button {
   width: 100%;
   height: 100%;
@@ -76,6 +111,7 @@ tr button {
   color: #ffffff;
   transition: 0.5s;
 }
+
 tr button:hover {
   background-color: #1cc620;
   color: #000000;

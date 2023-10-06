@@ -1,3 +1,5 @@
+const { ipcRenderer } = require('electron');
+
 document.addEventListener('keydown', handleKeyPress);
 
 const actionWindow = window.document.querySelector('.action_window');
@@ -24,12 +26,17 @@ const checkingClickRegistrations = (event) => {
     }
     //check for duplication of mathematical operators + period
     if (mathematicalOperators.includes(button)) {
-        const latestValues = actionWindow.value.slice(-1)
-        if (!mathematicalOperators.includes(latestValues) && latestValues !== '.') {
-            actionWindow.value += button
-        }
+        statementOutput(button)
     }
 };
+//statementOutput
+const statementOutput = (event) => {
+    const latestValues = actionWindow.value.slice(-1)
+    console.log(latestValues)
+    if (!mathematicalOperators.includes(latestValues) && latestValues !== '.') {
+        actionWindow.value += event
+    }
+}
 //check for duplication of period + mathematical operators  
 const checkExpression = (event) => {
     const expressions = actionWindow.value;
@@ -41,16 +48,22 @@ const checkExpression = (event) => {
     }
 };
 //registering clicks with button
-actionWindow.addEventListener('keydown', (event) => {
-    checkingClickRegistrations(event)
-});
+// actionWindow.addEventListener('keydown', (event) => {
+//     checkingClickRegistrations(event)
+// });
 //registering keyboard clicks
 function handleKeyPress(event) {
     checkingClickRegistrations(event)
 };
 //Function for passing numbers to the water window
 const clickhandlerNumber = (num) => {
-    actionWindow.value += num;
+    if (mathematicalOperators.includes(num)) {
+        statementOutput(num)
+    } else {
+        actionWindow.value += num;
+    }
+
+
 };
 //Full window cleaning function
 const deleteAllsymbols = () => {
@@ -103,4 +116,19 @@ const calculateExpression = () => {
     return actionWindow.value = +result.toFixed(2)
 }
 
+const minimize_Btn_Click = (event) => {
+    ipcRenderer.send('minimize-window');
 
+}
+const close_Btn_Click = (event) => {
+    ipcRenderer.send('close-window');
+}
+
+const minimizeBtn = document.querySelector('.minimize-button');
+const closeBtn = document.querySelector('.close-button');
+minimizeBtn.addEventListener('click', minimize_Btn_Click);
+closeBtn.addEventListener('click', close_Btn_Click);
+
+// const win = remote.getCurrentWindow(); //получает текущее открытое окно
+// win.minimize(); //сворачивает окно
+// win.close() //закрывает окно

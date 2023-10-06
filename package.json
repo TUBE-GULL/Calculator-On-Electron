@@ -2,13 +2,20 @@
   "name": "calculator",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/main.js",
   "scripts": {
+    "build": "electron-builder",
     "start": "electron . --no-sandbox"
   },
   "author": "Kartmen_Bro",
   "license": "ISC",
-  "dependencies": {
-    "electron": "^26.2.2"
-  }
+  "devDependencies": {
+    "electron": "^26.2.2",
+    "electron-builder": "^24.6.4"
+  },
+  "files": [
+    "main.js",
+    "renderer.js",
+    "assets/icons/Icon_calculator.png"
+  ]
 }
