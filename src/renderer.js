@@ -128,7 +128,3 @@ const minimizeBtn = document.querySelector('.minimize-button');
 const closeBtn = document.querySelector('.close-button');
 minimizeBtn.addEventListener('click', minimize_Btn_Click);
 closeBtn.addEventListener('click', close_Btn_Click);
-
-// const win = remote.getCurrentWindow(); //получает текущее открытое окно
-// win.minimize(); //сворачивает окно
-// win.close() //закрывает окно
