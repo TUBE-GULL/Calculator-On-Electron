@@ -7,7 +7,7 @@
 
 1.0.0
 
---------------------development stage-----------------------
+---------------------development stage------------------------
 
 0.0.6 removed the dot before the operators
 
