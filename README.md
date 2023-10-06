@@ -3,6 +3,10 @@
 ![Image Calculator](img/README_IMG.png)
 
 
+installation
+1) install npm i dependencies
+2) conversion npm run build
+
 ------------------------finished project---------------------------
 
 1.0.0
