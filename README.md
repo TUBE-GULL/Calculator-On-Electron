@@ -4,8 +4,8 @@
 
 
 installation
-1) install npm i dependencies
-2) conversion npm run build
+1) install " npm i " dependencies
+2) conversion " npm run build "
 
 ------------------------finished project---------------------------
 
