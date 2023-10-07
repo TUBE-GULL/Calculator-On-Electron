@@ -145,7 +145,7 @@ const nippleOfGod = () => {
     isDarkMode = !isDarkMode;
 };
 
-//---------------------------------------------------
+//button illumination when pressed---------------------------------------------------
 const buttons = document.querySelectorAll(".backlight");
 
 const backlightBnt = (event) => {

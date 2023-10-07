@@ -9,7 +9,9 @@ installation
 
 ------------------------finished project---------------------------
 
-1.0.0
+1.0.0 fixed all the errors
+
+1.0.1 added visual effects when pressing the keyboard, and also added changed day and night themes
 
 ---------------------development stage------------------------
 
