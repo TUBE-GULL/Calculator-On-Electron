@@ -1,6 +1,6 @@
                 Calculator
 
-![Image Calculator](img/README_IMG.png)
+![Image Calculator](img/README_IMG1.jpg)
 
 
 installation
